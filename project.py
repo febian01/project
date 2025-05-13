@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly.express as px
-import numpy as np
 from urllib.request import urlopen
 import json
 with urlopen('https://raw.githubusercontent.com/febian01/project/refs/heads/main/countries.geo.json') as response:
