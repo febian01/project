@@ -62,18 +62,18 @@ df_measured = df_all[df_all['Entity'].isin(df_measured['Entity'])]
 ## Country over time - line charts
 st.subheader('Gini Coefficient Over Time', divider="gray")
 st.plotly_chart(px.line(df_measured, x='Year', y='Gini coefficient', color='Entity'))
-with st.expander('See more:'):
+with st.expander('See more'):
     st.write('''The line chart tracks changes in the GINI Coefficient over time by country.
                 It helps uncover whether wealth inequality is rising, falling, or remaining stable.
                 Longitudinal trends offer insight into the success (or failure) of policy efforts.''')
 st.subheader('FDI Over Time', divider="gray")
 st.plotly_chart(px.line(df_measured, x='Year', y='FDI', color='Entity'))
-with st.expander('See more:'):
+with st.expander('See more'):
     st.write('''This chart shows how FDI (% of GDP) has changed over time for each country.
                 It helps identify investment trends and economic shifts across decades.''')
 st.subheader('Tourism Over Time', divider="gray")
 st.plotly_chart(px.line(df_measured, x='Year', y='Tourists', color='Entity'))
-with st.expander('See more:'):
+with st.expander('See more'):
     st.write('''This chart reveals how tourism’s role in GDP has evolved over time.
                 It’s especially useful for identifying growth or collapse in tourism economies (e.g., post-COVID).''')
 
