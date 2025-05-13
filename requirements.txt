@@ -1,5 +1,5 @@
-import streamlit
-import pandas
-import plotly.express
-from urllib.request import urlopen
-import json
+streamlit
+pandas
+plotly.express
+urlopen
+json
