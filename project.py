@@ -12,17 +12,24 @@ st.set_page_config(layout="wide")
 df_gini = pd.read_csv('https://raw.githubusercontent.com/febian01/project/refs/heads/main/gini_complete.csv')
 df_gini = df_gini.drop('990179-annotations', axis=1)
 df_gini = df_gini.drop('Code', axis=1)
+df_gini = df_gini.drop_duplicates(['Entity', 'Year'])
+df_gini = df_gini.sort_values(['Entity', 'Year'])
 
 df_fdi = pd.read_csv('https://raw.githubusercontent.com/febian01/project/refs/heads/main/fdi_complete.csv')
 df_fdi = df_fdi.rename(columns={"Foreign direct investment, net inflows (% of GDP)": 'FDI'})
 df_fdi = df_fdi.drop('Code', axis=1)
+df_fdi = df_fdi.drop_duplicates(['Entity', 'Year'])
+df_fdi = df_fdi.sort_values(['Entity', 'Year'])
 
 df_tourism = pd.read_csv('https://raw.githubusercontent.com/febian01/project/refs/heads/main/tourism_complete.csv')
 df_tourism = df_tourism.rename(columns={'Inbound arrivals of tourists': 'Tourists'})
 df_tourism = df_tourism.drop('Code', axis=1)
+df_tourism = df_tourism.drop_duplicates(['Entity', 'Year'])
+df_tourism = df_tourism.sort_values(['Entity', 'Year'])
 
 df_all = pd.merge(left=df_tourism, left_on=['Year', 'Entity'], right=df_fdi, right_on=['Year', 'Entity'], how='outer')
 df_all = pd.merge(left=df_all, left_on=['Year', 'Entity'], right=df_gini, right_on=['Year', 'Entity'], how='outer')
+df_all = df_all.sort_values(['Entity', 'Year']) 
 
 ## Show Data
 st.header('Effects of Tourism and Federal Direct Investment(FDI) on Gini Coefficient')
